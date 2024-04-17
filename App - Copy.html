@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moulink - Smart Home</title>
+    
+    <!-- Set the theme color for the browser's UI elements -->
+    <meta name="theme-color" content="#000000"> <!-- Change color to black -->
+    
+    <!-- Set the color of the status bar for iOS Safari -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> <!-- Change to black -->
+    <link rel="icon" type="image/png" href="asc.png">
+
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Define light mode styles */
+        body.light-mode {
+            background-color: #fff;
+            color: #000;
+        }
+
+        /* Define dark mode styles */
+        body.dark-mode {
+            background-color: #121212;
+            color: #fff;
+        }
+
+
+        /* Header Styles */
+        header {
+            background: #000;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Add a black line */
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background-color: #000;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: gold;
+        }
+
+        /* Navigation Styles */
+        .nav-toggle {
+            display: block;
+            position: absolute;
+            top: 30px;
+            right: 20px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .nav-toggle .icon-bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin-bottom: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-toggle.active .icon-bar:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .nav-toggle.active .icon-bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.active .icon-bar:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        nav {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: #000;
+            display: none;
+            z-index: 999;
+        }
+
+        nav.active {
+            display: block;
+        }
+
+   
+ 
+
+
+
+
+
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 100%;
+            margin: 0 ;
+        }
+
+        
+        /* Header Styles */
+        header {
+            background: #000;
+            color: #fff;
+            padding: 40px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+            color: gold;
+        }
+        nav ul {
+            margin-top: 20px;
+            padding: 0;
+            list-style-type: none;
+        }
+        nav ul li {
+            display: inline-block;
+            margin-left: 20px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        /* Banner Styles */
+        .banner {
+    background-image: url('ade.png');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    padding-top: 80px;
+    padding-right: 30px;
+    padding-left: 30px;
+    height: 320px;
+}
+.banner h2 {
+    padding-top: 0; /* إزالة الهامش العلوي */
+    margin-top: 0; /* إزالة الهامش العلوي بديلاً عن padding-top إذا لزم الأمر */
+    font-size: 36px;
+    
+    color: #ffffff;
+}
+
+.banner p {
+    margin-bottom: 0; /* إزالة الهامش السفلي */
+    font-size: 18px;
+    padding-bottom: 0; /* إزالة الهامش السفلي بديلاً عن margin-bottom إذا لزم الأمر */
+    color: #ffffff;
+}
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 20px;
+            background: #202020;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        .btn:hover {
+            background: #333;
+        }
+
+
+        .additional-content {
+            opacity: 1;
+        }
+
+        .additional-content .content-item {
+            margin-top: 0px;
+            text-align: center;
+
+        }
+
+        .additional-content .content-item img {
+            width: 100%;
+    object-fit: cover;
+        }
+
+        .additional-content .text-container {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .additional-content.show .text-container {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        .categories {
+            padding: 40px;
+            
+        }
+        .category-list {
+            
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap; 
+            margin: 10px;
+        }
+        .category {
+            flex: 0 0 30%;
+            margin-bottom: 10px;
+            text-align: center;
+            background-color: #000;
+            color: #fff;
+            padding-top: 10px; 
+            border-radius: 10px;
+        }
+        .category img {
+            width: 90%;
+            min-width: 250px;
+            max-width: 300px;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        .category h3 {
+            margin-top: 10px;
+            color: gold;
+        }
+        /* Offers Section Styles */
+        .offers {
+            padding: 10px 30px;
+
+        }
+        .offer-list {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap; 
+            margin: 10px;
+
+        }
+        .offer {
+            flex: 0 0 30%;
+            margin-bottom: 10px;
+            text-align: center;
+            background-color: #000;
+            color: #fff;
+            padding-top: 10px; 
+            border-radius: 10px;
+        }
+        .offer img {
+            width: 90%;
+            min-width: 250px;
+            max-width: 300px;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        .offer h3 {
+            margin-bottom: 10px;
+            color: gold;
+        }
+        .offer p {
+            font-size: 14px;
+        }
+        /* Company Info Section Styles */
+        .company-info {
+            background: url('a.png') no-repeat center center;
+            background-size: cover;
+            color: #ffffff;
+            font-weight:600;
+            padding: 50px 0; /* Adjust the top and bottom padding to increase height */
+            text-align: center;
+        }
+        .company-info p {
+            font-size: 18px;
+            margin: 20px;
+        }
+        .call-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        .call-btn:hover {
+            background: #333;
+        }
+        /* Footer Styles */
+        footer {
+            background: #000;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+        footer p {
+            margin: 0;
+        }
+        .content-item {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.content-item img {
+    width: 100%;
+}
+
+
+
+        
+    </style>
+</head>
+<body class="dark-mode">
+    <header>
+        <div class="container">
+
+
+            <a href="#" class="logo-link" style="position: absolute; top: 20px; left: 20px;">
+                <img src="logoo.png" alt="Description of the image" style="width: 150px; height: auto;">
+            </a>
+            
+            <div class="nav-toggle" onclick="toggleMenu()">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </div>
+            <nav id="main-menu">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Categories</a></li>
+                    <li><a href="#">Offers</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="banner">
+        <div class="container">
+            <h2>Welcome to Moulink - Your Ultimate Smart Home Experience!</h2>
+            <p>Experience the future of intelligent living with our smart home solutions.</p>
+        </div>
+    </section>
+
+ 
+
+    <!-- <div style="text-align: center; margin-bottom: 20px;"> 
+        <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    </div> -->
+    
+
+    <section class="additional-content">
+        <div class="container">
+          
+            <div class="content-item">
+                <img src="22.png" alt="Image 2">
+            </div>
+            <div class="content-item">
+                <img src="23.png" alt="Image 2">
+            </div>
+            <div class="content-item">
+                <img src="24.png" alt="Image 2">
+            </div>
+            <div class="content-item">
+                <img src="25.png" alt="Image 2">
+            </div>
+            <div class="content-item">
+                <img src="26.png" alt="Image 2">
+            </div>
+            <div class="content-item">
+                <img src="ada.png" alt="Image 3">
+            </div>
+        </div>
+    </section>
+    
+    <section class="categories">
+        <div class="container">
+            <h2>Popular Colors</h2>
+            <div class="category-list">
+                <div class="category">
+                    <img src="14.png" alt="Category 1">
+                </div>
+                <div class="category">
+                    <img src="15.png" alt="Category 2">
+                </div>
+                <div class="category">
+                    <img src="18.png" alt="Category 3">
+                </div>               
+                 <div class="category">
+                    <img src="16.png" alt="Category 3">
+                </div>
+                <div class="category">
+                    <img src="17.png" alt="Category 3">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="offers">
+        <div class="container">
+            <h2>Special Offers</h2>
+            <div class="offer-list">
+                <div class="offer">
+                    <img src="12.png" alt="Offer 1">
+                    <h3>Offer 1</h3>
+                    <p>Get up to 50% off on selected items!</p>
+                    <a href="#" class="btn">Add To Cart</a>
+                </div>
+                <div class="offer">
+                    <img src="13.png" alt="Offer 2">
+                    <h3>Offer 2</h3>
+                    <p>Buy one, get one free on all products!</p>
+                    <a href="#" class="btn">Add To Cart</a>
+                </div>
+             </div>
+        </div>
+    </section>
+
+    <section class="company-info">
+        <div class="container">
+            <p>For more information about our company, feel free to contact us:</p>
+        <a href="tel:01091602558" class="call-btn" onclick="callNumber()">Call Now</a>
+                
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Moulink. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get the "Home" link in the navigation
+            var homeLink = document.querySelector('nav ul li:nth-child(1) a');
+            
+            // Add click event listener to the "Home" link
+            homeLink.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent default link behavior
+    
+                // Get the position of the additional-content section
+                var imagesPosition = document.querySelector('.additional-content').getBoundingClientRect().top;
+    
+                // Scroll the window to the images section position
+                window.scrollTo({
+                    top: imagesPosition,
+                    behavior: 'smooth' // Smooth scrolling
+                });
+            });
+        });
+    </script>
+    
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get the "Categories" link in the navigation
+        var categoriesLink = document.querySelector('nav ul li:nth-child(2) a');
+        
+        // Add click event listener to the "Categories" link
+        categoriesLink.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default link behavior
+
+            // Get the position of the company-info section
+            var companyInfoPosition = document.querySelector('.categories').getBoundingClientRect().top;
+
+            // Scroll the window to the company-info section position
+            window.scrollTo({
+                top: companyInfoPosition,
+                behavior: 'smooth' // Smooth scrolling
+            });
+        });
+    });
+</script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get the "Offers" link in the navigation
+        var offersLink = document.querySelector('nav ul li:nth-child(3) a');
+        
+        // Add click event listener to the "Offers" link
+        offersLink.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default link behavior
+
+            // Get the position of the company-info section
+            var companyInfoPosition = document.querySelector('.offers').getBoundingClientRect().top;
+
+            // Scroll the window to the company-info section position
+            window.scrollTo({
+                top: companyInfoPosition,
+                behavior: 'smooth' // Smooth scrolling
+            });
+        });
+    });
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var additionalContent = document.querySelector('.additional-content');
+    var contentItems = document.querySelectorAll('.additional-content .content-item');
+
+    function handleScroll() {
+        var additionalContentPosition = additionalContent.getBoundingClientRect().top;
+        var windowHeight = window.innerHeight;
+
+        if (additionalContentPosition < windowHeight * 0.8) {
+            additionalContent.classList.add('show');
+            contentItems.forEach(function(item, index) {
+                setTimeout(function() {
+                    item.querySelector('.text-container').style.animation = 'fadeIn 1s forwards';
+                }, index * 500); // Delay animation for each item
+            });
+            window.removeEventListener('scroll', handleScroll);
+        }
+    }
+
+    window.addEventListener('scroll', handleScroll);
+});
+</script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get the "Contact" link in the navigation
+            var contactLink = document.querySelector('nav ul li:nth-child(4) a');
+            
+            // Add click event listener to the "Contact" link
+            contactLink.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent default link behavior
+
+                // Get the position of the footer
+                var footerPosition = document.querySelector('footer').getBoundingClientRect().top;
+
+                // Scroll the window to the footer position
+                window.scrollTo({
+                    top: footerPosition,
+                    behavior: 'smooth' // Smooth scrolling
+                });
+            });
+        });
+    </script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Get the "Shop Now" buttons
+    var shopNowButtons = document.querySelectorAll('.btn');
+
+    // Add click event listener to each "Shop Now" button
+    shopNowButtons.forEach(function(button) {
+        button.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default link behavior
+
+            // Display the phone number
+            alert("Call us now at: 0109 160 2558"); // You can modify this to your desired display method
+        });
+    });
+});
+
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get the "Shop Now" buttons
+        var shopNowButtons = document.querySelectorAll('.call-btn');
+    
+        // Add click event listener to each "Shop Now" button
+        shopNowButtons.forEach(function(button) {
+            button.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent default link behavior
+    
+                // Display the phone number
+                alert("Call us now at: 0109 160 2558"); // You can modify this to your desired display method
+            });
+        });
+    });
+    
+    </script>
+    
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("main-menu");
+            menu.classList.toggle("active");
+
+            var navToggle = document.querySelector('.nav-toggle');
+            navToggle.classList.toggle('active');
+        }
+
+        function toggleDarkMode() {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+        }
+
+        function callNumber() {
+        alert("Calling now: 0109 160 2558"); // Change this text to your desired message
+    }
+
+    </script>
+
+</body>
+</html>
